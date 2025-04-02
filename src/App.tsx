@@ -1,5 +1,5 @@
 import SelectSkip from './pages/SelectSkip/SelectSkip';
-import './App.css'
+import './styles/base.css';
 
 const App = () =>  <div><SelectSkip /></div>;
 
