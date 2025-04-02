@@ -11,3 +11,4 @@ This is a redesigned version of the Skip Select page from WeWantWaste (https://w
 1. Clone the repo:
    git clone git@github.com:georgeailenei/remwaste-challenge.git
    cd remwaste-challenge
+
