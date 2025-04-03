@@ -20,3 +20,27 @@
   background-color: var(--surface-success);
   color: var(--text-primary);
 }
+
+.drawer-btn {
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  padding: var(--spacing-sm);
+  border-radius: var(--spacing-xxs);
+  background-color: var(--surface-success);
+  width: 100%;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.back-btn {
+  border: none;
+  cursor: pointer;
+  color: var(--text-inverse);
+  padding: var(--spacing-sm);
+  border-radius: var(--spacing-xxs);
+  background-color: var(--surface-secondary);
+  width: 100%;
+  min-width: 60px;
+  max-width: 120px;
+}

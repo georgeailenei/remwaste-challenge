@@ -6,7 +6,7 @@
   padding: var(--spacing-sm);
   padding-bottom: var(--spacing-lg);
   margin: var(--spacing-lg);
-  min-width: 300px;
+  min-width: 175px;
   background-color: var(--surface-light);
   border-radius: var(--border-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

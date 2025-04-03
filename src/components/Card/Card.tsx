@@ -1,4 +1,5 @@
 import Button from '../Button/Button';
+import { calculateTotalPrice } from '../../lib/math';
 import './CardStyles.css';
 
 interface CardProps {
@@ -24,7 +25,7 @@ const Card = ({
   isSelected,
   onClick,
 }: CardProps) => {
-  const totalPrice = Math.ceil(price_before_vat * (1 + vat / 100) * (7 / hire_period_days));
+  const totalPrice = calculateTotalPrice(price_before_vat, vat, hire_period_days);
 
   const conditionTexts = [
     {
@@ -65,8 +66,7 @@ const Card = ({
         </div>
       </div>
 
-      <Button isSelected={isSelected} />
-
+      <Button variant='card' isSelected={isSelected} />
   </div>
   )
 }

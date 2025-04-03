@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card/Card";
+import Drawer from "../../components/Drawer/Drawer";
 import "./SelectSkipStyles.css";
 import { SkipItem } from "../../types/skipItem";
 
 const SelectSkip = () => {
   const [skipOptions, setSkipOptions] = useState<SkipItem[]>([]);
   const [selectedCard, setSelectedCard] = useState<null | number>(null);
+  const [skip, setSkip] = useState<SkipItem | null>(null);
+  
+  const firstItem = 0;
 
   const handleCardClick = (id: number) => {
-    setSelectedCard(id);
-  };
+    const selectedSkip = skipOptions.find((item) => item.id === id); 
 
+    if (selectedSkip) {
+      setSkip(selectedSkip); 
+      setSelectedCard(id); 
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -19,6 +27,12 @@ const SelectSkip = () => {
           "https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft"
         );
         setSkipOptions(response.data);
+
+        if (response.data.length > 0) {
+          setSelectedCard(response.data[firstItem].id); 
+          setSkip(response.data[firstItem ]); 
+        }
+
       } catch (error) {
         throw new Error(`${error}`);
       }
@@ -41,6 +55,8 @@ const SelectSkip = () => {
           />
         )}
       </div>
+
+      {skip && <Drawer {...skip} />}
     </div>
   );
 };
