@@ -23,7 +23,7 @@ const SelectSkip = () => {
   }, []);
 
   return (
-    <div>
+    <div className="select-skip-page-container">
       {skipOptions.map(item => <Card key={item.id} {...item} />)}
     </div>
   );

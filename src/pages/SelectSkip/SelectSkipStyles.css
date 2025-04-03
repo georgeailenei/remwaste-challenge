@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .select-skip-page-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1023px) {
+  .select-skip-page-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
