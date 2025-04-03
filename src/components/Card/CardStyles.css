@@ -11,6 +11,12 @@
   border-radius: var(--border-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.card-container.selected {
+  background-color: var(--surface-dark);
+  color: var(--surface-light);
 }
 
 .card-container:hover {
@@ -40,9 +46,16 @@
   color: var(--text-secondary);
 }
 
+.skip-info-details {
+  color: var(--text-secondary);
+}
+
+.skip-info-details.selected {
+  color: var(--text-inverse);
+}
+
 .skip-info {
   font-size: var(--font-sm);
-  color: var(--text-secondary);
   padding-top: var(--spacing-sm);
 }
 

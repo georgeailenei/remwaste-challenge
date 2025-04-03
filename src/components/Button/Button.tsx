@@ -1,8 +1,12 @@
 import './ButtonStyles.css';
 
-const Button = () => {
+interface ButtonProps {
+  isSelected: boolean;
+}
+
+const Button = ({ isSelected }: ButtonProps) => {
   return (
-    <button className="select-skip-btn">Select Skip</button>
+    <button className={`select-skip-btn ${isSelected ? 'selected' : ''}`}>{isSelected ? 'Selected' : 'Select Skip'}</button>
   )
 }
 

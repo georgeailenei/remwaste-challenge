@@ -15,3 +15,8 @@
   background-color: var(--surface-success);
   color: var(--text-primary);
 }
+
+.select-skip-btn.selected {
+  background-color: var(--surface-success);
+  color: var(--text-primary);
+}
