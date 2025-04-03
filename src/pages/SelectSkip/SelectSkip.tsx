@@ -75,9 +75,11 @@ const SelectSkip = () => {
 
       {skip && 
         <Drawer
+          id={skip.id}
           size={skip.size} 
           priceBeforeVat={skip.price_before_vat} 
           hirePeriodDays={skip.hire_period_days}
+          perTonneCost={skip.per_tonne_cost}
           vat={skip.vat}
           onBack={handleBackClick} 
           onContinue={handleContinueClick} 

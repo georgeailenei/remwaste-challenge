@@ -1,25 +1,31 @@
-import { calculateTotalPrice } from '../../lib/math';
+import { calculateTotalPrice, calculatePrice } from '../../lib/math';
 import Button from '../Button/Button';
+
 import './DrawerStyles.css';
 
 interface DrawerProps {
+  id: number;
   size: number;
   priceBeforeVat: number;
   vat: number;
   hirePeriodDays: number;
+  perTonneCost: number | null;
   onBack: () => void;
   onContinue: () => void;
 }
 
 const Drawer = ({
+  id,
   size,
   priceBeforeVat,
+  perTonneCost,
   vat,
   hirePeriodDays,
   onBack,
   onContinue
-}: DrawerProps) => {
-  const totalPrice = calculateTotalPrice(priceBeforeVat, vat, hirePeriodDays);
+}: DrawerProps) => {  
+  const price = calculatePrice(id, size, priceBeforeVat, perTonneCost);
+  const totalPrice = calculateTotalPrice(price, vat, hirePeriodDays);
 
   return (
     <div className="product-summary-wrapper">

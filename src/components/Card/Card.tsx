@@ -1,12 +1,14 @@
 import Button from '../Button/Button';
-import { calculateTotalPrice } from '../../lib/math';
+import { calculatePrice, calculateTotalPrice } from '../../lib/math';
 import './CardStyles.css';
 
 interface CardProps {
+  id: number;
   size: number;
   hire_period_days: number;
   transport_cost: number | null;
   price_before_vat: number;
+  per_tonne_cost: number | null;
   vat: number;
   allowed_on_road: boolean;
   allows_heavy_waste: boolean;
@@ -15,17 +17,20 @@ interface CardProps {
 }
 
 const Card = ({
+  id,
   size,
   hire_period_days,
   transport_cost,
   price_before_vat,
+  per_tonne_cost,
   vat,
   allowed_on_road,
   allows_heavy_waste,
   isSelected,
   onClick,
 }: CardProps) => {
-  const totalPrice = calculateTotalPrice(price_before_vat, vat, hire_period_days);
+  const price = calculatePrice(id, size, price_before_vat, per_tonne_cost);
+  const totalPrice = calculateTotalPrice(price, vat, hire_period_days);
 
   const conditionTexts = [
     {
