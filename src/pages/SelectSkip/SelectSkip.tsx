@@ -9,6 +9,7 @@ const SelectSkip = () => {
   const [skipOptions, setSkipOptions] = useState<SkipItem[]>([]);
   const [selectedCard, setSelectedCard] = useState<null | number>(null);
   const [skip, setSkip] = useState<SkipItem | null>(null);
+  const [loading, setLoading] = useState(true);
   
   const firstItem = 0;
 
@@ -35,6 +36,8 @@ const SelectSkip = () => {
 
       } catch (error) {
         throw new Error(`${error}`);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -45,7 +48,10 @@ const SelectSkip = () => {
     <div className="select-skip-page-wrapper">
       <h1 className="select-skip-page-title">Choose Your Skip Size</h1>
       <p className="select-skip-page-description">Select the skip size that best suits your needs</p>
-      <div className="select-skip-page-container">
+
+      {loading ? (
+        <div className="loading-message">Loading...</div>) : (
+        <div className="select-skip-page-container">
         {skipOptions.map(item => 
           <Card 
             key={item.id} 
@@ -54,7 +60,7 @@ const SelectSkip = () => {
             {...item} 
           />
         )}
-      </div>
+      </div>)}
 
       {skip && <Drawer {...skip} />}
     </div>
