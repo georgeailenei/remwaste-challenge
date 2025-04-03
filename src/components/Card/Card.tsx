@@ -26,9 +26,23 @@ const Card = ({
 }: CardProps) => {
   const totalPrice = Math.ceil(price_before_vat * (1 + vat / 100) * (7 / hire_period_days));
 
-  const transportCostText = transport_cost === null ? "Free delivery included" : "Transport cost applies";
-  const roadPlacementText = allowed_on_road ? "Roadside placement allowed" : "Roadside placement not allowed";
-  const heavyWasteText = allows_heavy_waste ? "Heavy waste allowed" : "Heavy waste not permitted";
+  const conditionTexts = [
+    {
+      text: transport_cost === null ? "Free delivery included" : "Transport cost applies",
+      isAvailable: transport_cost === null,
+    },
+    {
+      text: allowed_on_road ? "Roadside placement allowed" : "Roadside placement not allowed",
+      isAvailable: allowed_on_road,
+    },
+    {
+      text: allows_heavy_waste ? "Heavy waste allowed" : "Heavy waste not permitted",
+      isAvailable: allows_heavy_waste,
+    },
+  ];
+  
+  const benefits = conditionTexts.filter(condition => condition.isAvailable);
+  const limitations = conditionTexts.filter(condition => !condition.isAvailable);
   
   return (
     <div className={`card-container ${isSelected ? 'selected' : ''}`} onClick={onClick}>
@@ -40,10 +54,14 @@ const Card = ({
           <span className="price-label"> Per Week</span>
         </div>
 
-        <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
-          <p className="skip-info">{transportCostText}</p>
-          <p className="skip-info">{roadPlacementText}</p>
-          <p className="skip-info">{heavyWasteText}</p>
+        <div>
+          <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
+            {benefits.map(info => <p className='skip-info'>{info.text}</p>)}
+          </div>
+
+          <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
+            {limitations.map(info => <p className='skip-info-warning'>{info.text}</p>)}
+          </div>
         </div>
       </div>
 

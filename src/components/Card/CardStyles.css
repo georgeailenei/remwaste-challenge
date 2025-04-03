@@ -62,3 +62,12 @@
 .skip-info::before {
   content: "✔️ ";
 }
+
+.skip-info-warning {
+  font-size: var(--font-sm);
+  padding-top: var(--spacing-sm);
+}
+
+.skip-info-warning::before {
+  content: "⚠️ ";
+}
