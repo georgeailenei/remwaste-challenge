@@ -1,0 +1,17 @@
+.select-skip-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--surface-dark);
+  color: var(--text-inverse);
+  padding: var(--spacing-sm);
+  border-radius: var(--spacing-xxs);
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.select-skip-btn:hover {
+  background-color: var(--surface-success);
+  color: var(--text-primary);
+}

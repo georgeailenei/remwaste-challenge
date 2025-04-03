@@ -1,0 +1,36 @@
+:root {
+  --background-color: #fefcf1;
+
+  --primary-color: #1e1d1d;
+  --secondary-color: #fcfbfc;
+
+  --surface-light: #fcfbfc;
+  --surface-dark: #1e1d1d;
+  --surface-success: #d6fa53;
+
+  --text-primary: #1e1d1d;
+  --text-secondary: #747474;
+  --text-tertiary: #e0dfe2;
+  --text-inverse: #fcfbfc;
+  
+  --border-radius: 8px;
+
+  --spacing-xxs: 8px;
+  --spacing-xs: 12px;
+  --spacing-sm: 16px;
+  --spacing-md: 20px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.5rem;
+  --font-xl: 2rem;
+  --font-xxl: 2.5rem;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
