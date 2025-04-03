@@ -23,8 +23,12 @@ const SelectSkip = () => {
   }, []);
 
   return (
-    <div className="select-skip-page-container">
-      {skipOptions.map(item => <Card key={item.id} {...item} />)}
+    <div className="select-skip-page-wrapper">
+      <h1 className="select-skip-page-title">Choose Your Skip Size</h1>
+      <p className="select-skip-page-description">Select the skip size that best suits your needs</p>
+      <div className="select-skip-page-container">
+        {skipOptions.map(item => <Card key={item.id} {...item} />)}
+      </div>
     </div>
   );
 };
