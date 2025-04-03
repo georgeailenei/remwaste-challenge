@@ -9,7 +9,7 @@
 .step-block {
   width: 45px;
   height: 4px;
-  border: 1px solid var(--surface-dark); 
+  border: 1px solid var(--surface-dark);
   border-radius: 8px;
   background-color: transparent;
 }
@@ -22,7 +22,7 @@
   .step-block {
     width: 60px;
     height: 4px;
-    border: 1px solid var(--surface-dark); 
+    border: 1px solid var(--surface-dark);
     border-radius: 8px;
     background-color: transparent;
   }

@@ -1,7 +1,7 @@
-import { calculateTotalPrice, calculatePrice } from '../../lib/math';
-import Button from '../Button/Button';
+import { calculateTotalPrice, calculatePrice } from "../../lib/math";
+import Button from "../Button/Button";
 
-import './DrawerStyles.css';
+import "./DrawerStyles.css";
 
 interface DrawerProps {
   id: number;
@@ -22,14 +22,14 @@ const Drawer = ({
   vat,
   hirePeriodDays,
   onBack,
-  onContinue
-}: DrawerProps) => {  
+  onContinue,
+}: DrawerProps) => {
   const price = calculatePrice(id, size, priceBeforeVat, perTonneCost);
   const totalPrice = calculateTotalPrice(price, vat, hirePeriodDays);
 
   return (
     <div className="product-summary-wrapper">
-      <div className='product-summary-container-wrapper'>
+      <div className="product-summary-container-wrapper">
         <div className="product-summary-container">
           <div className="product-summary-content">
             <h2>Selected Size: {size} yards</h2>
@@ -38,14 +38,17 @@ const Drawer = ({
           </div>
 
           <div className="product-summary-buttons">
-
-            <Button variant='back' onClick={onBack}>Back</Button>
-            <Button variant='drawer' onClick={onContinue}>Continue</Button>
+            <Button variant="back" onClick={onBack}>
+              Back
+            </Button>
+            <Button variant="drawer" onClick={onContinue}>
+              Continue
+            </Button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Drawer;

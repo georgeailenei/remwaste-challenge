@@ -1,6 +1,6 @@
-import Button from '../Button/Button';
-import { calculatePrice, calculateTotalPrice } from '../../lib/math';
-import './CardStyles.css';
+import Button from "../Button/Button";
+import { calculatePrice, calculateTotalPrice } from "../../lib/math";
+import "./CardStyles.css";
 
 interface CardProps {
   id: number;
@@ -34,24 +34,36 @@ const Card = ({
 
   const conditionTexts = [
     {
-      text: transport_cost === null ? "Free delivery included" : "Transport cost applies",
+      text:
+        transport_cost === null
+          ? "Free delivery included"
+          : "Transport cost applies",
       isAvailable: transport_cost === null,
     },
     {
-      text: allowed_on_road ? "Roadside placement allowed" : "Roadside placement not allowed",
+      text: allowed_on_road
+        ? "Roadside placement allowed"
+        : "Roadside placement not allowed",
       isAvailable: allowed_on_road,
     },
     {
-      text: allows_heavy_waste ? "Heavy waste allowed" : "Heavy waste not permitted",
+      text: allows_heavy_waste
+        ? "Heavy waste allowed"
+        : "Heavy waste not permitted",
       isAvailable: allows_heavy_waste,
     },
   ];
-  
-  const benefits = conditionTexts.filter(condition => condition.isAvailable);
-  const limitations = conditionTexts.filter(condition => !condition.isAvailable);
-  
+
+  const benefits = conditionTexts.filter((condition) => condition.isAvailable);
+  const limitations = conditionTexts.filter(
+    (condition) => !condition.isAvailable
+  );
+
   return (
-    <div className={`card-container ${isSelected ? 'selected' : ''}`} onClick={onClick}>
+    <div
+      className={`card-container ${isSelected ? "selected" : ""}`}
+      onClick={onClick}
+    >
       <span className="skip-size">{size} Yards</span>
 
       <div className="pricing-details">
@@ -61,19 +73,27 @@ const Card = ({
         </div>
 
         <div>
-          <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
-            {benefits.map(info => <p className='skip-info' key={info.text}>{info.text}</p>)}
+          <div className={`skip-info-details ${isSelected ? "selected" : ""}`}>
+            {benefits.map((info) => (
+              <p className="skip-info" key={info.text}>
+                {info.text}
+              </p>
+            ))}
           </div>
 
-          <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
-            {limitations.map(info => <p className='skip-info-warning' key={info.text}>{info.text}</p>)}
+          <div className={`skip-info-details ${isSelected ? "selected" : ""}`}>
+            {limitations.map((info) => (
+              <p className="skip-info-warning" key={info.text}>
+                {info.text}
+              </p>
+            ))}
           </div>
         </div>
       </div>
 
-      <Button variant='card' isSelected={isSelected} />
-  </div>
-  )
-}
+      <Button variant="card" isSelected={isSelected} />
+    </div>
+  );
+};
 
-export default Card; 
+export default Card;

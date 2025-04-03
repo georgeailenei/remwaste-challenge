@@ -15,19 +15,19 @@ const SelectSkip = () => {
   const firstItem = 0;
 
   const handleBackClick = () => {
-    setStep(prevStep => (prevStep > 0 ? prevStep - 1 : prevStep));
+    setStep((prevStep) => (prevStep > 0 ? prevStep - 1 : prevStep));
   };
 
   const handleContinueClick = () => {
-    setStep(prevStep => (prevStep < 6 ? prevStep + 1 : prevStep));
+    setStep((prevStep) => (prevStep < 6 ? prevStep + 1 : prevStep));
   };
 
   const handleCardClick = (id: number) => {
-    const selectedSkip = skipOptions.find((item) => item.id === id); 
+    const selectedSkip = skipOptions.find((item) => item.id === id);
 
     if (selectedSkip) {
-      setSkip(selectedSkip); 
-      setSelectedCard(id); 
+      setSkip(selectedSkip);
+      setSelectedCard(id);
     }
   };
 
@@ -40,10 +40,9 @@ const SelectSkip = () => {
         setSkipOptions(response.data);
 
         if (response.data.length > 0) {
-          setSelectedCard(response.data[firstItem].id); 
-          setSkip(response.data[firstItem ]); 
+          setSelectedCard(response.data[firstItem].id);
+          setSkip(response.data[firstItem]);
         }
-
       } catch (error) {
         throw new Error(`${error}`);
       } finally {
@@ -58,33 +57,37 @@ const SelectSkip = () => {
     <div className="select-skip-page-wrapper">
       <ProgressIndicator currentStep={step} />
       <h1 className="select-skip-page-title">Choose Your Skip Size</h1>
-      <p className="select-skip-page-description">Select the skip size that best suits your needs</p>
+      <p className="select-skip-page-description">
+        Select the skip size that best suits your needs
+      </p>
 
       {loading ? (
-        <div className="loading-message">Loading...</div>) : (
+        <div className="loading-message">Loading...</div>
+      ) : (
         <div className="select-skip-page-container">
-        {skipOptions.map(item => 
-          <Card 
-            key={item.id} 
-            isSelected={item.id === selectedCard}
-            onClick={() => handleCardClick(item.id)}
-            {...item} 
-          />
-        )}
-      </div>)}
+          {skipOptions.map((item) => (
+            <Card
+              key={item.id}
+              isSelected={item.id === selectedCard}
+              onClick={() => handleCardClick(item.id)}
+              {...item}
+            />
+          ))}
+        </div>
+      )}
 
-      {skip && 
+      {skip && (
         <Drawer
           id={skip.id}
-          size={skip.size} 
-          priceBeforeVat={skip.price_before_vat} 
+          size={skip.size}
+          priceBeforeVat={skip.price_before_vat}
           hirePeriodDays={skip.hire_period_days}
           perTonneCost={skip.per_tonne_cost}
           vat={skip.vat}
-          onBack={handleBackClick} 
-          onContinue={handleContinueClick} 
+          onBack={handleBackClick}
+          onContinue={handleContinueClick}
         />
-      }
+      )}
     </div>
   );
 };

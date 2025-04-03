@@ -2,15 +2,15 @@
   padding-top: var(--spacing-lg);
 }
 
-.select-skip-page-container { 
+.select-skip-page-container {
   display: grid;
   grid-template-columns: 1fr;
   margin-top: var(--spacing-lg);
 }
 
 .select-skip-page-container::after {
-  content: ''; 
-  display: block; 
+  content: "";
+  display: block;
   grid-column: span 1;
   height: 200px;
 }
@@ -39,13 +39,13 @@
   }
 
   .select-skip-page-container::after {
-    content: ''; 
-    display: block; 
+    content: "";
+    display: block;
     grid-column: span 2;
     height: 200px;
   }
 
-  .select-skip-page-title { 
+  .select-skip-page-title {
     font-size: var(--font-xxl);
   }
 }
