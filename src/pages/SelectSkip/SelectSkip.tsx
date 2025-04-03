@@ -10,9 +10,17 @@ const SelectSkip = () => {
   const [skipOptions, setSkipOptions] = useState<SkipItem[]>([]);
   const [selectedCard, setSelectedCard] = useState<null | number>(null);
   const [skip, setSkip] = useState<SkipItem | null>(null);
+  const [step, setStep] = useState(3);
   const [loading, setLoading] = useState(true);
-  
   const firstItem = 0;
+
+  const handleBackClick = () => {
+    setStep(prevStep => (prevStep > 0 ? prevStep - 1 : prevStep));
+  };
+
+  const handleContinueClick = () => {
+    setStep(prevStep => (prevStep < 6 ? prevStep + 1 : prevStep));
+  };
 
   const handleCardClick = (id: number) => {
     const selectedSkip = skipOptions.find((item) => item.id === id); 
@@ -22,6 +30,7 @@ const SelectSkip = () => {
       setSelectedCard(id); 
     }
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,7 +56,7 @@ const SelectSkip = () => {
 
   return (
     <div className="select-skip-page-wrapper">
-      <ProgressIndicator currentStep={3} />
+      <ProgressIndicator currentStep={step} />
       <h1 className="select-skip-page-title">Choose Your Skip Size</h1>
       <p className="select-skip-page-description">Select the skip size that best suits your needs</p>
 
@@ -64,7 +73,16 @@ const SelectSkip = () => {
         )}
       </div>)}
 
-      {skip && <Drawer {...skip} />}
+      {skip && 
+        <Drawer
+          size={skip.size} 
+          priceBeforeVat={skip.price_before_vat} 
+          hirePeriodDays={skip.hire_period_days}
+          vat={skip.vat}
+          onBack={handleBackClick} 
+          onContinue={handleContinueClick} 
+        />
+      }
     </div>
   );
 };

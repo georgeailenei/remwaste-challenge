@@ -57,11 +57,11 @@ const Card = ({
 
         <div>
           <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
-            {benefits.map(info => <p className='skip-info'>{info.text}</p>)}
+            {benefits.map(info => <p className='skip-info' key={info.text}>{info.text}</p>)}
           </div>
 
           <div className={`skip-info-details ${isSelected ? 'selected' : ''}`}>
-            {limitations.map(info => <p className='skip-info-warning'>{info.text}</p>)}
+            {limitations.map(info => <p className='skip-info-warning' key={info.text}>{info.text}</p>)}
           </div>
         </div>
       </div>

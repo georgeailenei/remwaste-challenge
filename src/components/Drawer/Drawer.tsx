@@ -1,11 +1,25 @@
-import { SkipItem } from '../../types/skipItem';
 import { calculateTotalPrice } from '../../lib/math';
 import Button from '../Button/Button';
 import './DrawerStyles.css';
 
-const Drawer = (props: SkipItem) => {
-  const {size, price_before_vat, vat, hire_period_days} = props;
-  const totalPrice = calculateTotalPrice(price_before_vat, vat, hire_period_days);
+interface DrawerProps {
+  size: number;
+  priceBeforeVat: number;
+  vat: number;
+  hirePeriodDays: number;
+  onBack: () => void;
+  onContinue: () => void;
+}
+
+const Drawer = ({
+  size,
+  priceBeforeVat,
+  vat,
+  hirePeriodDays,
+  onBack,
+  onContinue
+}: DrawerProps) => {
+  const totalPrice = calculateTotalPrice(priceBeforeVat, vat, hirePeriodDays);
 
   return (
     <div className="product-summary-wrapper">
@@ -18,8 +32,9 @@ const Drawer = (props: SkipItem) => {
           </div>
 
           <div className="product-summary-buttons">
-            <Button variant='back'>Back</Button>
-            <Button variant='drawer'>Continue</Button>
+
+            <Button variant='back' onClick={onBack}>Back</Button>
+            <Button variant='drawer' onClick={onContinue}>Continue</Button>
           </div>
         </div>
       </div>

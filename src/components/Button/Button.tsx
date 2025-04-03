@@ -5,11 +5,14 @@ interface ButtonProps {
   variant: 'card' | 'drawer' | 'back';
   children?: React.ReactNode;
   isSelected?: boolean;
+  onClick?: () => void;
 }
 
-const Button = ({ isSelected, variant, children }: ButtonProps) => {
-  const handleRedirect = () => {
-    window.location.href = '/'; 
+const Button = ({ isSelected, variant, children, onClick }: ButtonProps) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
   };
 
   switch (variant) {
@@ -21,13 +24,13 @@ const Button = ({ isSelected, variant, children }: ButtonProps) => {
       );
     case 'drawer':
       return (
-        <button className='drawer-btn' onClick={handleRedirect}>
+        <button className='drawer-btn' onClick={handleClick}>
           {children || 'Default Drawer Button'}
         </button>
       );
     case 'back':
       return (
-        <button className='back-btn' onClick={handleRedirect}>
+        <button className='back-btn' onClick={handleClick}>
           {children || 'Back'}
         </button>
       );
