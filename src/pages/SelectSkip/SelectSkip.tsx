@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card/Card";
 import "./SelectSkipStyles.css";
+import { SkipItem } from "../../types/skipItem";
 
 const SelectSkip = () => {
-  const [skipOptions, setSkipOptions] = useState([]);
+  const [skipOptions, setSkipOptions] = useState<SkipItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +22,9 @@ const SelectSkip = () => {
     fetchData();
   }, []);
 
-  console.log(skipOptions);
-
   return (
     <div>
-        <Card />
+      {skipOptions.map(item => <Card key={item.id} {...item} />)}
     </div>
   );
 };
