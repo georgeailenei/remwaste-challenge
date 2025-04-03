@@ -1,0 +1,29 @@
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.step-block {
+  width: 45px;
+  height: 4px;
+  border: 1px solid var(--surface-dark); 
+  border-radius: 8px;
+  background-color: transparent;
+}
+
+.step-block.filled {
+  background-color: var(--surface-dark);
+}
+
+@media (min-width: 768px) {
+  .step-block {
+    width: 60px;
+    height: 4px;
+    border: 1px solid var(--surface-dark); 
+    border-radius: 8px;
+    background-color: transparent;
+  }
+}

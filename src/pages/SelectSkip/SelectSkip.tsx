@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card/Card";
 import Drawer from "../../components/Drawer/Drawer";
+import ProgressIndicator from "../../components/ProgressIndicator/ProgressIndicator";
 import "./SelectSkipStyles.css";
 import { SkipItem } from "../../types/skipItem";
 
@@ -46,6 +47,7 @@ const SelectSkip = () => {
 
   return (
     <div className="select-skip-page-wrapper">
+      <ProgressIndicator currentStep={3} />
       <h1 className="select-skip-page-title">Choose Your Skip Size</h1>
       <p className="select-skip-page-description">Select the skip size that best suits your needs</p>
 
